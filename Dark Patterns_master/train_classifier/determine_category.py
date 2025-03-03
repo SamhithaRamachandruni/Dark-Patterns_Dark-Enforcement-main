@@ -34,7 +34,8 @@ count_vect = CountVectorizer()
 X_train_counts = count_vect.fit_transform(X_train)
 tfidf_transformer = TfidfTransformer()
 X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
-clf = BernoulliNB().fit(X_train_tfidf, y_train)
+
+clf = MultinomialNB().fit(X_train_tfidf, y_train)
  
  X_test = count_vect.transform(X_test)
  X_test = tfidf_transformer.transform(X_test)
