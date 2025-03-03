@@ -40,7 +40,7 @@ clf = BernoulliNB().fit(X_train_tfidf, y_train)
  X_test = tfidf_transformer.transform(X_test)
  y_pred = clf.predict(X_test)
 
-clf = MultinomialNB().fit(X_train_tfidf, y_train)
+
 print("Accuracy: ", metrics.accuracy_score(y_pred, y_test))
 dump(clf, 'category_classifier.joblib')
 dump(count_vect, 'category_vectorizer.joblib')
