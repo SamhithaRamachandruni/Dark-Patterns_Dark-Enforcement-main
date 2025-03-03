@@ -33,7 +33,9 @@ X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
 
 clf = BernoulliNB().fit(X_train_tfidf, y_train)
 
-y_pred = clf.predict(count_vect.transform(X_test))
+X_test = count_vect.transform(X_test)
+X_test = tfidf_transformer.transform(X_test)
+y_pred = clf.predict(X_test)
 
 print("Accuracy: ", metrics.accuracy_score(y_pred, y_test))
 
