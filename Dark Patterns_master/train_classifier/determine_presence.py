@@ -25,7 +25,7 @@ df2 = df2[col]
 df = pd.concat([df1, df2])
 
 X_train, X_test, y_train, y_test = train_test_split(
-    df['Pattern String'], df["classification"], train_size = .25)
+    df['Pattern String'], df["classification"], train_size = .75)
 count_vect = CountVectorizer()
 X_train_counts = count_vect.fit_transform(X_train)
 tfidf_transformer = TfidfTransformer()
