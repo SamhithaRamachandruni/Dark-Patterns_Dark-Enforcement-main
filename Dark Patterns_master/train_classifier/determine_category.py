@@ -29,7 +29,7 @@ features = tfidf.fit_transform(df["Pattern String"]).toarray()
 labels = df.category_id
 
 X_train, X_test, y_train, y_test = train_test_split(
-    df['Pattern String'], df[selected_classification], train_size=.3)
+    df['Pattern String'], df[selected_classification], train_size=.70)
 count_vect = CountVectorizer()
 X_train_counts = count_vect.fit_transform(X_train)
 tfidf_transformer = TfidfTransformer()
@@ -41,6 +41,6 @@ clf = BernoulliNB().fit(X_train_tfidf, y_train)
  y_pred = clf.predict(X_test)
 
 clf = MultinomialNB().fit(X_train_tfidf, y_train)
-
+print("Accuracy: ", metrics.accuracy_score(y_pred, y_test))
 dump(clf, 'category_classifier.joblib')
 dump(count_vect, 'category_vectorizer.joblib')
