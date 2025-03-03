@@ -33,8 +33,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 count_vect = CountVectorizer()
 X_train_counts = count_vect.fit_transform(X_train)
 tfidf_transformer = TfidfTransformer()
-X_train_counts = count_vect.fit_transform(X_train)
- tfidf_transformer = TfidfTransformer()
+
  X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
  
  clf = BernoulliNB().fit(X_train_tfidf, y_train)
